@@ -3,130 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pari Kitchen VIP Page</title>
+<title>Pari Kitchen – Digital Menu</title>
+
 <style>
-    :root { --primary: #7b1fa2; --bg: #f8f9fa; --veg: #2e7d32; --nonveg: #c62828; }
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); }
-    header { background: var(--primary); color: white; text-align: center; padding: 20px; }
-    nav { background: white; display: flex; justify-content: center; gap: 8px; padding: 12px; position: sticky; top: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; }
-    nav button { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; }
-    section { max-width: 600px; margin: auto; padding: 15px; }
-    .content-box { display: none; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    
-    /* DOUBLE MENU BUTTONS */
-    .menu-toggle { display: flex; gap: 10px; margin-bottom: 20px; }
-    .btn-tab { flex: 1; padding: 12px; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 10px; font-weight: bold; cursor: pointer; }
-    .btn-tab.active { background: var(--primary); color: white; }
-
-    .menu-list { display: none; text-align: left; }
-    .menu-list.active { display: block; }
-
-    .menu-cat { color: var(--primary); border-bottom: 2px solid #eee; margin-top: 15px; padding-bottom: 5px; font-weight: bold; }
-    .menu-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ddd; font-size: 14px; }
-    .price { font-weight: bold; color: #d32f2f; }
-
-    .btn-action { display: block; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; color: white; margin-top: 10px; text-align: center; }
-    .map-container iframe { width: 100%; height: 350px; border: 0; border-radius: 10px; }
-    footer { background: #222; color: white; text-align: center; padding: 15px; font-size: 12px; margin-top: 20px; }
+:root{--p:#6a1b9a;--bg:#f4f4f4}
+body{margin:0;font-family:Arial;background:var(--bg)}
+header{background:var(--p);color:#fff;text-align:center;padding:18px}
+nav{position:sticky;top:0;background:#fff;display:flex;justify-content:center;gap:8px;
+padding:10px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+nav button{border:none;background:var(--p);color:#fff;padding:10px 14px;
+border-radius:20px;font-weight:bold}
+section{max-width:700px;margin:auto;padding:15px}
+.box{display:none;background:#fff;padding:18px;border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.switch{display:flex;gap:10px;margin-bottom:15px}
+.switch button{flex:1;padding:10px;border:2px solid var(--p);background:#fff;
+color:var(--p);border-radius:10px;font-weight:bold}
+.switch .active{background:var(--p);color:#fff}
+.menu{display:none}
+.menu.active{display:block}
+.cat{margin-top:16px;font-weight:bold;color:var(--p);
+border-bottom:2px solid #eee;padding-bottom:4px}
+.item{display:flex;justify-content:space-between;padding:6px 0;
+border-bottom:1px dashed #ddd;font-size:14px}
+.price{font-weight:bold;color:#c62828}
+.btn{display:block;text-align:center;text-decoration:none;padding:12px;
+margin-top:10px;border-radius:10px;font-weight:bold;color:#fff}
+.map iframe{width:100%;height:330px;border:0;border-radius:10px}
+footer{background:#222;color:#fff;text-align:center;font-size:12px;
+padding:12px;margin-top:20px}
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Pari Kitchen</h1>
-    <p>Best Food in Chira Chas ⭐ 4.9 (79 Reviews)</p>
+<h2>Pari Kitchen</h2>
+<p>Best Food in Chira Chas ⭐</p>
 </header>
 
 <nav>
-    <button onclick="showSection('home')">🏠 Main</button>
-    <button onclick="showSection('menu')">🍽 Digital Menu</button>
-    <button onclick="showSection('map')">📍 Location</button>
+<button onclick="showBox('home')">🏠 Home</button>
+<button onclick="showBox('menu')">🍽 Menu</button>
+<button onclick="showBox('map')">📍 Location</button>
 </nav>
 
 <section>
-    <div id="home" class="content-box" style="display: block;">
-        <h2 style="text-align:center;">Namaste!</h2>
-        <p style="text-align:center;">⏰ <b>Open:</b> 6:00 AM – 12:30 AM</p>
-        <a href="https://wa.me/919006414133" class="btn-action" style="background:#25D366;">💬 WhatsApp Message</a>
-        <a href="tel:+919006414133" class="btn-action" style="background:var(--primary);">📞 Call Now</a>
-    </div>
 
-    <div id="menu" class="content-box">
-        <div class="menu-toggle">
-            <button id="tabVeg" class="btn-tab active" onclick="switchMenu('veg')">🟢 Veg Menu</button>
-            <button id="tabNonVeg" class="btn-tab" onclick="switchMenu('nonveg')">🔴 Non-Veg & Drinks</button>
-        </div>
+<!-- HOME -->
+<div id="home" class="box" style="display:block">
+<p style="text-align:center"><b>⏰ Open:</b> 6:00 AM – 12:30 AM</p>
+<a class="btn" style="background:#25D366" href="https://wa.me/919006414133">💬 WhatsApp</a>
+<a class="btn" style="background:var(--p)" href="tel:+919006414133">📞 Call Now</a>
+</div>
 
-        <div id="vMenu" class="menu-list active">
-            <div class="menu-cat">Veg Thali & Specials</div>
-            <div class="menu-item"><span>Veg Thali</span><span class="price">₹80</span></div>
-            <div class="menu-item"><span>Special Thali (Roti 4, Rice 1/2, Sabji, Paneer, Raita, Dal)</span><span class="price">₹120</span></div>
-            <div class="menu-item"><span>Litti Chokha Ghee (2pc)</span><span class="price">₹30</span></div>
+<!-- MENU -->
+<div id="menu" class="box">
 
-            <div class="menu-cat">Dosa & Idli</div>
-            <div class="menu-item"><span>Plain Dosa / Masala Dosa</span><span class="price">₹40 / ₹50</span></div>
-            <div class="menu-item"><span>Onion Dosa / Uttpam</span><span class="price">₹60 / ₹60</span></div>
-            <div class="menu-item"><span>Idli 2Pc / Mini 10Pc</span><span class="price">₹20 / ₹50</span></div>
+<div class="switch">
+<button id="b1" class="active" onclick="switchMenu(1)">Menu – 1</button>
+<button id="b2" onclick="switchMenu(2)">Menu – 2</button>
+</div>
 
-            <div class="menu-cat">Veg Main Course (H/F)</div>
-            <div class="menu-item"><span>Paneer Kadai</span><span class="price">₹80/160</span></div>
-            <div class="menu-item"><span>Paneer Butter Masala</span><span class="price">₹120/200</span></div>
-            <div class="menu-item"><span>Palak / Matar Paneer</span><span class="price">₹100/180</span></div>
-            <div class="menu-item"><span>Mushroom Masala</span><span class="price">₹200</span></div>
-        </div>
+<!-- MENU 1 -->
+<div id="m1" class="menu active">
 
-        <div id="nvMenu" class="menu-list">
-            <div class="menu-cat">Biryani & Non-Veg Special</div>
-            <div class="menu-item"><span>Chicken Biryani</span><span class="price">₹260</span></div>
-            <div class="menu-item"><span>Non Veg Thali</span><span class="price">₹120</span></div>
-            <div class="menu-item"><span>Chicken Chilli (H/F)</span><span class="price">₹90/220</span></div>
-            <div class="menu-item"><span>Litti Chicken</span><span class="price">₹120</span></div>
+<div class="cat">Beverages</div>
+<div class="item"><span>Tea</span><span class="price">10</span></div>
+<div class="item"><span>Coffee</span><span class="price">20</span></div>
+<div class="item"><span>Mineral Water</span><span class="price">20</span></div>
+<div class="item"><span>Cold Drinks</span><span class="price">MRP</span></div>
 
-            <div class="menu-cat">Egg Items</div>
-            <div class="menu-item"><span>Egg Curry (H/F)</span><span class="price">₹70/120</span></div>
-            <div class="menu-item"><span>Egg Bhurji / Omlet</span><span class="price">₹60 / ₹35</span></div>
-            <div class="price" style="font-size: 11px; margin-top:5px;">*Complimentary Chatni, Onion, Aachar included.</div>
+<div class="cat">Dosa / Idli</div>
+<div class="item"><span>Plain Dosa</span><span class="price">40</span></div>
+<div class="item"><span>Masala Dosa</span><span class="price">50</span></div>
+<div class="item"><span>Onion Masala Dosa</span><span class="price">60</span></div>
+<div class="item"><span>Uttpam</span><span class="price">60</span></div>
+<div class="item"><span>Idli 2 Pc</span><span class="price">20</span></div>
+<div class="item"><span>Idli Mini 6 Pc</span><span class="price">30</span></div>
+<div class="item"><span>Idli Mini 10 Pc</span><span class="price">45</span></div>
 
-            <div class="menu-cat">Beverages</div>
-            <div class="menu-item"><span>Tea / Coffee</span><span class="price">₹10 / ₹20</span></div>
-            <div class="menu-item"><span>Cold Drinks / Maggi</span><span class="price">MRP</span></div>
-        </div>
-    </div>
+<div class="cat">Roti / Roll</div>
+<div class="item"><span>Plain Roti</span><span class="price">10</span></div>
+<div class="item"><span>Aloo Paratha</span><span class="price">30</span></div>
+<div class="item"><span>Paneer Paratha</span><span class="price">40</span></div>
+<div class="item"><span>Veg Roll</span><span class="price">30</span></div>
+<div class="item"><span>Paneer Roll</span><span class="price">60</span></div>
+<div class="item"><span>Egg Roll</span><span class="price">35</span></div>
 
-    <div id="map" class="content-box">
-        <h3 style="text-align:center;">Hamari Location</h3>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.43632462208!2d86.1715!3d23.637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM4JzEyLjgiTiA4NsKwMTAnMTcuNCJF!5e0!3m2!1sen!2sin!4v1715000000000" allowfullscreen="" loading="lazy"></iframe>
-            <a href="https://maps.google.com/maps?q=Pari+Kitchen+Chira+Chas" target="_blank" class="btn-action" style="background:#4285F4;">🧭 Open in Google Maps</a>
-        </div>
-    </div>
+<div class="cat">Rice / Biryani</div>
+<div class="item"><span>Plain Rice</span><span class="price">50 / 100</span></div>
+<div class="item"><span>Jeera Rice</span><span class="price">60 / 120</span></div>
+<div class="item"><span>Pulao</span><span class="price">100 / 200</span></div>
+<div class="item"><span>Veg Chowmein</span><span class="price">60</span></div>
+<div class="item"><span>Egg Chowmein</span><span class="price">80</span></div>
+
+<div class="cat">Thali</div>
+<div class="item"><span>Veg Thali</span><span class="price">80</span></div>
+<div class="item"><span>Non Veg Thali</span><span class="price">120</span></div>
+<div class="item"><span>Special Thali</span><span class="price">120</span></div>
+
+<div class="cat">Non Veg</div>
+<div class="item"><span>Chicken Butter Masala</span><span class="price">220</span></div>
+<div class="item"><span>Chicken Kadai</span><span class="price">220</span></div>
+<div class="item"><span>Egg Curry</span><span class="price">50 / 100</span></div>
+
+</div>
+
+<!-- MENU 2 -->
+<div id="m2" class="menu">
+
+<div class="cat">Beverages</div>
+<div class="item"><span>Tea</span><span class="price">10</span></div>
+<div class="item"><span>Coffee</span><span class="price">20</span></div>
+
+<div class="cat">Veg</div>
+<div class="item"><span>Veg Thali</span><span class="price">80</span></div>
+<div class="item"><span>Special Thali</span><span class="price">120</span></div>
+<div class="item"><span>Paneer Butter Masala</span><span class="price">120 / 200</span></div>
+
+<div class="cat">Non Veg</div>
+<div class="item"><span>Chicken Biryani</span><span class="price">260</span></div>
+<div class="item"><span>Chicken Chilli</span><span class="price">90 / 220</span></div>
+<div class="item"><span>Egg Bhurji</span><span class="price">60</span></div>
+
+</div>
+</div>
+
+<!-- MAP -->
+<div id="map" class="box map">
+<iframe src="https://www.google.com/maps?q=Pari+Kitchen+Chira+Chas&output=embed"
+loading="lazy"></iframe>
+<a class="btn" style="background:#4285F4"
+href="https://maps.google.com/maps?q=Pari+Kitchen+Chira+Chas" target="_blank">
+🧭 Open Google Maps</a>
+</div>
+
 </section>
 
 <footer>
-    © 2026 Pari Kitchen | Road No - 4, Vastu Vihar, Chira Chas
+© 2026 Pari Kitchen | Chira Chas
 </footer>
 
 <script>
-    function showSection(id) {
-        document.querySelectorAll('.content-box').forEach(div => div.style.display = 'none');
-        document.getElementById(id).style.display = 'block';
-    }
-
-    function switchMenu(type) {
-        document.getElementById('vMenu').classList.remove('active');
-        document.getElementById('nvMenu').classList.remove('active');
-        document.getElementById('tabVeg').classList.remove('active');
-        document.getElementById('tabNonVeg').classList.remove('active');
-
-        if(type === 'veg') {
-            document.getElementById('vMenu').classList.add('active');
-            document.getElementById('tabVeg').classList.add('active');
-        } else {
-            document.getElementById('nvMenu').classList.add('active');
-            document.getElementById('tabNonVeg').classList.add('active');
-        }
-    }
+function showBox(id){
+document.querySelectorAll('.box').forEach(b=>b.style.display='none');
+document.getElementById(id).style.display='block';
+}
+function switchMenu(n){
+m1.classList.remove('active');m2.classList.remove('active');
+b1.classList.remove('active');b2.classList.remove('active');
+if(n===1){m1.classList.add('active');b1.classList.add('active')}
+else{m2.classList.add('active');b2.classList.add('active')}
+}
 </script>
 
 </body>
-</html>
+                                                                                    </html>
