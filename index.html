@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pari Kitchen – Best Food in Chira Chas</title>
+<title>Pari Kitchen – Chira Chas</title>
 
 <style>
 :root {
     --primary: #7b1fa2; /* Violet tone */
     --bg-light: #f8f9fa;
     --card-bg: #ffffff;
+    --whatsapp-green: #25D366;
 }
 
 body {
@@ -35,13 +36,12 @@ nav {
     background: white;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     padding: 15px;
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    flex-wrap: wrap;
 }
 
 nav button {
@@ -63,7 +63,7 @@ section {
 }
 
 .content-box {
-    display: none; /* Default hidden */
+    display: none;
     animation: fadeIn 0.4s;
 }
 
@@ -71,6 +71,40 @@ section {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+/* WELCOME BOX */
+.welcome-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.welcome-card h2 { margin-top: 0; color: var(--primary); }
+
+.info-row { margin: 15px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+/* BUTTONS */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-link {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+}
+
+.bg-whatsapp { background: var(--whatsapp-green); }
+.bg-call { background: var(--primary); }
 
 /* MENU STYLING */
 .menu-category {
@@ -96,41 +130,12 @@ section {
     border-bottom: 1px dashed #eee;
 }
 
-/* MAP STYLING */
-.map-container {
-    background: white;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
+/* MAP */
 .map-container iframe {
     width: 100%;
     height: 400px;
     border: 0;
-    border-radius: 10px;
-}
-
-/* INFO AREA */
-.home-info {
-    text-align: center;
-    background: white;
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.info-item { margin: 15px 0; font-size: 18px; }
-
-.btn-whatsapp {
-    display: inline-block;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    margin-top: 10px;
+    border-radius: 12px;
 }
 
 footer {
@@ -151,21 +156,25 @@ footer {
 </header>
 
 <nav>
-    <button onclick="showSection('home')">🏠 Home</button>
+    <button onclick="showSection('welcome')">🏠 Main</button>
     <button onclick="showSection('menu')">🍽 View Menu</button>
     <button onclick="showSection('map')">📍 Location</button>
-    <button onclick="openCall()">📞 Call</button>
 </nav>
 
 <section>
 
-    <div id="home" class="content-box" style="display: block;">
-        <div class="home-info">
+    <div id="welcome" class="content-box" style="display: block;">
+        <div class="welcome-card">
             <h2>Swagat Hai!</h2>
-            <div class="info-item">⏰ <b>Open:</b> Morning – 12:30 AM</div>
-            <div class="info-item">💰 <b>Average Price:</b> ₹200 – ₹400</div>
-            <a href="https://wa.me/919006414133" class="btn-whatsapp">📲 WhatsApp: 9006414133</a>
-            <p style="margin-top:20px; color:#666;">Menu dekhne ke liye upar diye gaye button par click karein.</p>
+            <div class="info-row">⏰ <b>Open:</b> 6:00 AM – 12:30 AM</div>
+            <div class="info-row">💰 <b>Avg Price:</b> ₹200 – ₹400</div>
+            
+            <div class="action-buttons">
+                <a href="https://wa.me/919006414133" class="btn-link bg-whatsapp">💬 WhatsApp Message</a>
+                <a href="tel:+919006414133" class="btn-link bg-call">📞 Direct Call</a>
+            </div>
+            
+            <p style="margin-top:20px; color:#666; font-size: 14px;">Menu dekhne ke liye upar diye gaye button par click karein.</p>
         </div>
     </div>
 
@@ -177,55 +186,34 @@ footer {
             <div class="menu-item"><span>Coffee</span> <span>₹20</span></div>
             <div class="menu-item"><span>Maggi / Cheese Maggi</span> <span>₹35 / ₹45</span></div>
         </div>
-
         <div class="menu-category">
             <h2>Roti & Dosa</h2>
-            <div class="menu-item"><span>Plain Roti</span> <span>₹10</span></div>
             <div class="menu-item"><span>Aloo / Paneer Paratha</span> <span>₹30 / ₹40</span></div>
             <div class="menu-item"><span>Plain Dosa</span> <span>₹40</span></div>
             <div class="menu-item"><span>Masala / Onion Dosa</span> <span>₹50 / ₹60</span></div>
-        </div>
-
-        <div class="menu-category">
-            <h2>Specials</h2>
-            <div class="menu-item"><span>Chicken Biryani</span> <span>₹250</span></div>
-            <div class="menu-item"><span>Litti Chokha Ghee</span> <span>₹30</span></div>
-            <div class="menu-item"><span>Veg Thali</span> <span>₹80</span></div>
         </div>
     </div>
 
     <div id="map" class="content-box">
         <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.551573516584!2d86.1685718!3d23.6562544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f423692aa7d8d7%3A0x1d4a8e3f4974f762!2sPari%20Kitchen%20-%20Best%20Food%20in%20chira%20chas!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.123!2d86.177!3d23.645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4233742374237%3A0x1234567890abcdef!2sPari%20Kitchen!5e0!3m2!1sen!2sin!4v1234567890"></iframe>
         </div>
     </div>
 
 </section>
 
 <footer>
-© 2026 Pari Kitchen | Chira Chas | 📞 9006414133
+© 2026 Pari Kitchen | Chira Chas
 </footer>
 
 <script>
 function showSection(id) {
-    // Hide all sections
-    document.querySelectorAll('.content-box').forEach(div => {
-        div.style.display = 'none';
-    });
-    // Show selected section
+    document.querySelectorAll('.content-box').forEach(div => div.style.display = 'none');
     document.getElementById(id).style.display = 'block';
 }
 
-function openCall() {
-    window.location.href = "tel:+919006414133";
-}
-
 function openDirections() {
-    window.open("https://www.google.com/maps/dir//Pari+Kitchen+-+Best+Food+in+chira+chas/@23.6562544,86.1685718,17z/", "_blank");
+    window.open("https://maps.google.com/maps?daddr=Pari+Kitchen+Chira+Chas", "_blank");
 }
 </script>
 
