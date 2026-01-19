@@ -6,105 +6,129 @@
 <title>Pari Kitchen – Best Food in Chira Chas</title>
 
 <style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f2f2f2;
+:root {
+    --primary: #7b1fa2; /* Violet tone */
+    --bg-light: #f8f9fa; /* Clean light gray */
+    --card-bg: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-light);
+    color: #333;
 }
 
 /* HEADER */
-header{
-    background:#7b1fa2; /* violet tone like Google Map */
-    color:white;
-    text-align:center;
-    padding:22px 10px;
+header {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-header h1{ margin:0; font-size:26px; }
-header p{ margin:5px 0 0; }
+header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
+header p { margin: 8px 0 0; opacity: 0.9; font-size: 14px; }
 
 /* NAV */
-nav{
-    background:white;
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    padding:12px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+nav {
+    background: white;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    flex-wrap: wrap;
 }
 
-nav button{
-    background:#7b1fa2;
-    color:white;
-    border:none;
-    padding:10px 16px;
-    font-size:15px;
-    border-radius:20px;
-    cursor:pointer;
+nav button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-/* SECTION */
-section{
-    max-width:1000px;
-    margin:auto;
-    padding:18px;
+nav button:active { transform: scale(0.95); }
+
+/* SECTION & CONTENT */
+section {
+    max-width: 800px;
+    margin: auto;
+    padding: 15px;
 }
 
-/* MENU */
-.menu-box{
-    display:none;
-    gap:15px;
-    flex-wrap:wrap;
-    justify-content:center;
+/* TEXT MENU STYLING */
+.menu-container {
+    display: none; /* Hidden by default, shown by JS */
+    flex-direction: column;
+    gap: 20px;
 }
 
-.menu-box img{
-    width:100%;
-    max-width:450px;
-    border-radius:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+.menu-category {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* MAP */
-.map-box{
-    display:none;
-    text-align:center;
+.menu-category h2 {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+    margin-top: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.map-box iframe{
-    width:100%;
-    max-width:420px;
-    height:260px;
-    border:0;
-    border-radius:10px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 15px;
 }
 
-/* INFO */
-.info{
-    background:white;
-    margin-top:18px;
-    padding:15px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+.menu-item:last-child { border-bottom: none; }
+
+.price-cols { font-size: 12px; font-weight: bold; color: #666; margin-bottom: 5px; text-align: right; }
+
+/* MAP & INFO */
+.map-box { display: none; text-align: center; background: white; padding: 15px; border-radius: 12px; }
+.map-box iframe { width: 100%; height: 350px; border: 0; border-radius: 10px; }
+
+.info {
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
 }
 
-.info a{
-    display:block;
-    margin-top:10px;
-    text-decoration:none;
-    color:#7b1fa2;
-    font-weight:bold;
+.info p { margin: 10px 0; font-size: 16px; }
+.info a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #25D366; /* WhatsApp Green */
+    font-weight: bold;
+    border: 2px solid #25D366;
+    padding: 8px 20px;
+    border-radius: 20px;
 }
 
-/* FOOTER */
-footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:10px;
-    margin-top:20px;
-}
+footer { background: #222; color: white; text-align: center; padding: 15px; margin-top: 30px; font-size: 14px; }
+
 </style>
 </head>
 
@@ -116,7 +140,7 @@ footer{
 </header>
 
 <nav>
-    <button onclick="showMenu()">🍽 Menu</button>
+    <button onclick="showMenu()">🍽 View Menu</button>
     <button onclick="showMap()">📍 Location</button>
     <button onclick="openCall()">📞 Call</button>
     <button onclick="openDirections()">🧭 Directions</button>
@@ -124,28 +148,66 @@ footer{
 
 <section>
 
-<!-- MENU PHOTOS -->
-<div id="menu" class="menu-box">
-    <img src="menu1.jpg" alt="Pari Kitchen Menu">
-    <img src="menu2.jpg" alt="Pari Kitchen Menu">
-</div>
+    <div id="menu" class="menu-container" style="display: flex;">
+        
+        <div class="menu-category">
+            <h2>Beverages</h2>
+            <div class="menu-item"><span>Tea</span> <span>₹10</span></div>
+            <div class="menu-item"><span>Mineral Water</span> <span>₹20</span></div>
+            <div class="menu-item"><span>Coffee</span> <span>₹20</span></div>
+            <div class="menu-item"><span>Cold Drinks</span> <span>MRP</span></div>
+            <div class="menu-item"><span>Bread Butter</span> <span>₹30</span></div>
+            <div class="menu-item"><span>Maggi / Cheese Maggi</span> <span>₹35 / ₹45</span></div>
+        </div>
 
-<!-- LIVE GOOGLE MAP -->
-<div id="map" class="map-box">
-    <h3>Our Location</h3>
-    <iframe 
-        src="https://www.google.com/maps?q=Pari+Kitchen+Best+Food+in+Chira+Chas&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
+        <div class="menu-category">
+            <h2>Roti & Dosa</h2>
+            <div class="menu-item"><span>Plain Roti</span> <span>₹10</span></div>
+            <div class="menu-item"><span>Aloo / Paneer Paratha</span> <span>₹30 / ₹40</span></div>
+            <div class="menu-item"><span>Plain Dosa</span> <span>₹40</span></div>
+            <div class="menu-item"><span>Masala / Onion Dosa</span> <span>₹50 / ₹60</span></div>
+            <div class="menu-item"><span>Idli (2Pc) / Mini (10Pc)</span> <span>₹20 / ₹45</span></div>
+        </div>
 
-<!-- INFO -->
-<div class="info">
-    <p>⏰ <b>Open:</b> Morning – 12:30 AM</p>
-    <p>💰 <b>Price:</b> ₹200 – ₹400</p>
-    <a href="https://wa.me/91XXXXXXXXXX">📲 WhatsApp Call</a>
-</div>
+        <div class="menu-category">
+            <h2>Veg Dishes <span style="font-size:12px">Half / Full</span></h2>
+            <div class="menu-item"><span>Paneer Kadai / Masala</span> <span>₹120 / ₹200</span></div>
+            <div class="menu-item"><span>Paneer Chilli</span> <span>₹100 / ₹200</span></div>
+            <div class="menu-item"><span>Mix Veg</span> <span>₹100 / ₹170</span></div>
+            <div class="menu-item"><span>Dal Tarka</span> <span>₹80 / ₹160</span></div>
+            <div class="menu-item"><span>Mushroom Masala</span> <span>₹200</span></div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Non-Veg <span style="font-size:12px">Half / Full</span></h2>
+            <div class="menu-item"><span>Chicken Butter Masala</span> <span>₹220</span></div>
+            <div class="menu-item"><span>Chicken Chilli</span> <span>₹90 / ₹220</span></div>
+            <div class="menu-item"><span>Egg Curry (Full)</span> <span>₹100</span></div>
+            <div class="menu-item"><span>Egg Bhurji / Omlet</span> <span>₹60 / ₹35</span></div>
+            <div class="menu-item"><span>Chicken Lollypop</span> <span>₹200</span></div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Thali & Specials</h2>
+            <div class="menu-item"><span>Veg Thali</span> <span>₹80</span></div>
+            <div class="menu-item"><span>Non-Veg / Special Thali</span> <span>₹120</span></div>
+            <div class="menu-item"><span>Litti Chokha Ghee (2Pc)</span> <span>₹30</span></div>
+            <div class="menu-item"><span>Hyderabadi Chicken Biryani</span> <span>₹250</span></div>
+        </div>
+        
+        <p style="text-align:center; font-style:italic; color:#666;">* Complimentary Chatni, Onion, Aachar with meals.</p>
+    </div>
+
+    <div id="map" class="map-box">
+        <h3>Our Location</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=YOUR_EMBED_LINK_HERE"></iframe>
+    </div>
+
+    <div class="info">
+        <p>⏰ <b>Open:</b> Morning – 12:30 AM</p>
+        <p>💰 <b>Average Price:</b> ₹200 – ₹400</p>
+        <a href="https://wa.me/919006414133">📲 WhatsApp for Orders</a>
+    </div>
 
 </section>
 
@@ -163,10 +225,10 @@ function showMap(){
     document.getElementById("map").style.display="block";
 }
 function openCall(){
-    window.location.href="https://wa.me/91XXXXXXXXXX";
+    window.location.href="tel:+919006414133"; // Replace with real number
 }
 function openDirections(){
-    window.open("https://www.google.com/maps/dir/?api=1&destination=Pari+Kitchen+Chira+Chas","_blank");
+    window.open("https://maps.google.com","_blank");
 }
 </script>
 
