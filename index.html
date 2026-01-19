@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pari Kitchen – Digital Menu</title>
+<title>Pari Kitchen – Complete Digital Menu</title>
 
 <style>
 :root{--p:#6a1b9a;--bg:#f4f4f4}
@@ -13,7 +13,7 @@ nav{position:sticky;top:0;background:#fff;display:flex;justify-content:center;ga
 padding:10px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 nav button{border:none;background:var(--p);color:#fff;padding:10px 14px;
 border-radius:20px;font-weight:bold}
-section{max-width:700px;margin:auto;padding:15px}
+section{max-width:750px;margin:auto;padding:15px}
 .box{display:none;background:#fff;padding:18px;border-radius:12px;
 box-shadow:0 2px 8px rgba(0,0,0,.05)}
 .switch{display:flex;gap:10px;margin-bottom:15px}
@@ -22,7 +22,7 @@ color:var(--p);border-radius:10px;font-weight:bold}
 .switch .active{background:var(--p);color:#fff}
 .menu{display:none}
 .menu.active{display:block}
-.cat{margin-top:16px;font-weight:bold;color:var(--p);
+.cat{margin-top:18px;font-weight:bold;color:var(--p);
 border-bottom:2px solid #eee;padding-bottom:4px}
 .item{display:flex;justify-content:space-between;padding:6px 0;
 border-bottom:1px dashed #ddd;font-size:14px}
@@ -65,16 +65,19 @@ padding:12px;margin-top:20px}
 <button id="b2" onclick="switchMenu(2)">Menu – 2</button>
 </div>
 
-<!-- MENU 1 -->
+<!-- ================= MENU 1 ================= -->
 <div id="m1" class="menu active">
 
-<div class="cat">Beverages</div>
+<div class="cat">BEVERAGES</div>
 <div class="item"><span>Tea</span><span class="price">10</span></div>
 <div class="item"><span>Coffee</span><span class="price">20</span></div>
 <div class="item"><span>Mineral Water</span><span class="price">20</span></div>
 <div class="item"><span>Cold Drinks</span><span class="price">MRP</span></div>
+<div class="item"><span>Bread Butter</span><span class="price">30</span></div>
+<div class="item"><span>Maggi</span><span class="price">35</span></div>
+<div class="item"><span>Cheese Maggi</span><span class="price">45</span></div>
 
-<div class="cat">Dosa / Idli</div>
+<div class="cat">DOSA / IDLI</div>
 <div class="item"><span>Plain Dosa</span><span class="price">40</span></div>
 <div class="item"><span>Masala Dosa</span><span class="price">50</span></div>
 <div class="item"><span>Onion Masala Dosa</span><span class="price">60</span></div>
@@ -82,45 +85,86 @@ padding:12px;margin-top:20px}
 <div class="item"><span>Idli 2 Pc</span><span class="price">20</span></div>
 <div class="item"><span>Idli Mini 6 Pc</span><span class="price">30</span></div>
 <div class="item"><span>Idli Mini 10 Pc</span><span class="price">45</span></div>
+<div class="item"><span>Idli Chilli 8 Pc</span><span class="price">50</span></div>
 
-<div class="cat">Roti / Roll</div>
+<div class="cat">ROTI / ROLL</div>
 <div class="item"><span>Plain Roti</span><span class="price">10</span></div>
 <div class="item"><span>Aloo Paratha</span><span class="price">30</span></div>
+<div class="item"><span>Aloo Onion Paratha</span><span class="price">30</span></div>
 <div class="item"><span>Paneer Paratha</span><span class="price">40</span></div>
 <div class="item"><span>Veg Roll</span><span class="price">30</span></div>
 <div class="item"><span>Paneer Roll</span><span class="price">60</span></div>
 <div class="item"><span>Egg Roll</span><span class="price">35</span></div>
 
-<div class="cat">Rice / Biryani</div>
+<div class="cat">RICE / CHOWMEIN</div>
+<div class="item"><span>Veg Chowmein</span><span class="price">60</span></div>
+<div class="item"><span>Egg Chowmein</span><span class="price">80</span></div>
 <div class="item"><span>Plain Rice</span><span class="price">50 / 100</span></div>
 <div class="item"><span>Jeera Rice</span><span class="price">60 / 120</span></div>
 <div class="item"><span>Pulao</span><span class="price">100 / 200</span></div>
-<div class="item"><span>Veg Chowmein</span><span class="price">60</span></div>
-<div class="item"><span>Egg Chowmein</span><span class="price">80</span></div>
+<div class="item"><span>Papad Fry</span><span class="price">20</span></div>
 
-<div class="cat">Thali</div>
+<div class="cat">DAL</div>
+<div class="item"><span>Dal Tarka</span><span class="price">80 / 160</span></div>
+<div class="item"><span>Plain Dal</span><span class="price">60 / 100</span></div>
+
+<div class="cat">VEG</div>
+<div class="item"><span>Paneer Kadai</span><span class="price">120 / 200</span></div>
+<div class="item"><span>Paneer Butter Masala</span><span class="price">140 / 200</span></div>
+<div class="item"><span>Paneer 65</span><span class="price">200</span></div>
+<div class="item"><span>Paneer Chilli</span><span class="price">100 / 200</span></div>
+<div class="item"><span>Palak Paneer</span><span class="price">100 / 180</span></div>
+<div class="item"><span>Matar Paneer</span><span class="price">100 / 180</span></div>
+<div class="item"><span>Mix Veg</span><span class="price">170</span></div>
+<div class="item"><span>Mushroom Masala</span><span class="price">200</span></div>
+<div class="item"><span>Mushroom Chilli</span><span class="price">160</span></div>
+<div class="item"><span>Litti Chokha Ghee</span><span class="price">30</span></div>
+
+<div class="cat">BIRYANI / THALI</div>
 <div class="item"><span>Veg Thali</span><span class="price">80</span></div>
 <div class="item"><span>Non Veg Thali</span><span class="price">120</span></div>
 <div class="item"><span>Special Thali</span><span class="price">120</span></div>
+<div class="item"><span>Hyderabadi Chicken Biryani</span><span class="price">250</span></div>
+<div class="item"><span>Hyderabadi Egg Biryani</span><span class="price">200</span></div>
 
-<div class="cat">Non Veg</div>
+<div class="cat">NON VEG</div>
+<div class="item"><span>Chicken Lollipop</span><span class="price">200</span></div>
+<div class="item"><span>Chicken 65</span><span class="price">250</span></div>
 <div class="item"><span>Chicken Butter Masala</span><span class="price">220</span></div>
-<div class="item"><span>Chicken Kadai</span><span class="price">220</span></div>
+<div class="item"><span>Chicken Kadai Masala</span><span class="price">220</span></div>
+<div class="item"><span>Chicken Chilli</span><span class="price">90 / 220</span></div>
+<div class="item"><span>Litti Chicken</span><span class="price">120</span></div>
+
+<div class="cat">EGG</div>
 <div class="item"><span>Egg Curry</span><span class="price">50 / 100</span></div>
+<div class="item"><span>Egg Bhurji</span><span class="price">40 / 70</span></div>
+<div class="item"><span>Egg Omelet</span><span class="price">40 / 70</span></div>
+<div class="item"><span>Cheese Omelet</span><span class="price">80</span></div>
+<div class="item"><span>Egg Chilli</span><span class="price">120</span></div>
+
+<div class="cat">SWEET</div>
+<div class="item"><span>Gulab Jamun 2 Pc</span><span class="price">40</span></div>
+
+<p style="font-size:12px;margin-top:8px">
+Complimentary Chatni, Onion, Aachar
+</p>
 
 </div>
 
-<!-- MENU 2 -->
+<!-- ================= MENU 2 ================= -->
 <div id="m2" class="menu">
+
+<!-- SAME AS SECOND MENU YOU PROVIDED -->
+<!-- (kept separate for customer choice) -->
 
 <div class="cat">Beverages</div>
 <div class="item"><span>Tea</span><span class="price">10</span></div>
 <div class="item"><span>Coffee</span><span class="price">20</span></div>
+<div class="item"><span>Cold Drinks / Maggi</span><span class="price">MRP</span></div>
 
-<div class="cat">Veg</div>
+<div class="cat">Veg / Thali</div>
 <div class="item"><span>Veg Thali</span><span class="price">80</span></div>
 <div class="item"><span>Special Thali</span><span class="price">120</span></div>
-<div class="item"><span>Paneer Butter Masala</span><span class="price">120 / 200</span></div>
 
 <div class="cat">Non Veg</div>
 <div class="item"><span>Chicken Biryani</span><span class="price">260</span></div>
@@ -159,4 +203,4 @@ else{m2.classList.add('active');b2.classList.add('active')}
 </script>
 
 </body>
-                                                                                    </html>
+  </html>
