@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pari Kitchen – Official Page</title>
+<title>Pari Kitchen VIP Page</title>
 <style>
     :root { --primary: #7b1fa2; --bg: #f8f9fa; }
     body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); }
@@ -12,9 +12,20 @@
     nav button { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 13px; }
     section { max-width: 600px; margin: auto; padding: 15px; }
     .content-box { display: none; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .btn-action { display: block; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; color: white; margin-top: 10px; text-align: center; font-size: 16px; }
-    .menu-cat { color: var(--primary); border-bottom: 2px solid #eee; margin-top: 20px; padding-bottom: 5px; font-size: 18px; }
+    
+    /* MENU BUTTONS */
+    .menu-toggle-btns { display: flex; gap: 10px; margin-bottom: 20px; }
+    .btn-menu { flex: 1; padding: 12px; border: 2px solid var(--primary); background: white; color: var(--primary); border-radius: 10px; font-weight: bold; cursor: pointer; }
+    .btn-menu.active { background: var(--primary); color: white; }
+
+    .menu-list { display: none; text-align: left; }
+    .menu-list.active { display: block; }
+
+    .menu-cat { color: var(--primary); border-bottom: 2px solid #eee; margin-top: 15px; padding-bottom: 5px; font-weight: bold; }
     .menu-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ddd; font-size: 14px; }
+    .price { font-weight: bold; color: #d32f2f; }
+
+    .btn-action { display: block; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; color: white; margin-top: 10px; text-align: center; }
     .map-container iframe { width: 100%; height: 350px; border: 0; border-radius: 10px; }
     footer { background: #222; color: white; text-align: center; padding: 15px; font-size: 12px; margin-top: 20px; }
 </style>
@@ -23,65 +34,92 @@
 
 <header>
     <h1>Pari Kitchen</h1>
-    <p>Best Food in Chira Chas ⭐ 4.9 (79 Reviews)</p>
+    <p>Best Food in Chira Chas ⭐ 4.9</p>
 </header>
 
 <nav>
-    <button onclick="show('home')">🏠 Main</button>
-    <button onclick="show('menu')">🍽 View Menu</button>
-    <button onclick="show('map')">📍 Location</button>
+    <button onclick="showSection('home')">🏠 Main</button>
+    <button onclick="showSection('menu')">🍽 Digital Menu</button>
+    <button onclick="showSection('map')">📍 Location</button>
 </nav>
 
 <section>
     <div id="home" class="content-box" style="display: block;">
-        <h2 style="text-align:center;">Namaste!</h2>
-        <p style="text-align:center;">⏰ <b>Open:</b> 6:00 AM – 12:30 AM</p>
-        
-        <a href="https://wa.me/919006414133" class="btn-action" style="background:#25D366;">
-            💬 WhatsApp Message
-        </a>
-        
-        <a href="tel:+919006414133" class="btn-action" style="background:var(--primary);">
-            📞 Call Now
-        </a>
+        <h2>Namaste!</h2>
+        <p>⏰ <b>Open:</b> 6:00 AM – 12:30 AM</p>
+        <a href="https://wa.me/919006414133" class="btn-action" style="background:#25D366;">💬 WhatsApp Message</a>
+        <a href="tel:+919006414133" class="btn-action" style="background:var(--primary);">📞 Call Now</a>
     </div>
 
     <div id="menu" class="content-box">
-        <h3 class="menu-cat">Popular Items</h3>
-        <div class="menu-item"><span>Veg Thali</span><span>₹80</span></div>
-        <div class="menu-item"><span>Chicken Biryani</span><span>₹250</span></div>
-        <div class="menu-item"><span>Litti Chokha Ghee</span><span>₹30</span></div>
-        <div class="menu-item"><span>Paneer 65</span><span>₹200</span></div>
-        <div class="menu-item"><span>Chicken Lollypop</span><span>₹200</span></div>
+        <div class="menu-toggle-btns">
+            <button id="btnVeg" class="btn-menu active" onclick="toggleMenu('veg')">🟢 Veg Menu</button>
+            <button id="btnNonVeg" class="btn-menu" onclick="toggleMenu('nonveg')">🔴 Non-Veg & Drinks</button>
+        </div>
+
+        <div id="vegMenu" class="menu-list active">
+            <div class="menu-cat">Veg Thali & Rice</div>
+            <div class="menu-item"><span>Veg Thali</span><span class="price">₹80</span></div>
+            <div class="menu-item"><span>Plain Rice (H/F)</span><span class="price">₹50/100</span></div>
+            <div class="menu-item"><span>Special Thali</span><span class="price">₹120</span></div>
+            
+            <div class="menu-cat">Dosa & South Indian</div>
+            <div class="menu-item"><span>Plain Dosa</span><span class="price">₹40</span></div>
+            <div class="menu-item"><span>Masala Dosa</span><span class="price">₹50</span></div>
+            <div class="menu-item"><span>Idli 2Pc</span><span class="price">₹20</span></div>
+
+            <div class="menu-cat">Veg Starters</div>
+            <div class="menu-item"><span>Paneer 65</span><span class="price">₹200</span></div>
+            <div class="menu-item"><span>Litti Chokha Ghee (2pc)</span><span class="price">₹30</span></div>
+        </div>
+
+        <div id="nonvegMenu" class="menu-list">
+            <div class="menu-cat">Non-Veg Special</div>
+            <div class="menu-item"><span>Hyderbadi Chi. Biryani</span><span class="price">₹260</span></div>
+            <div class="menu-item"><span>Non Veg Thali</span><span class="price">₹120</span></div>
+            <div class="menu-item"><span>Chicken Lollypop</span><span class="price">₹200</span></div>
+            
+            <div class="menu-cat">Egg & Chicken</div>
+            <div class="menu-item"><span>Egg Curry (H/F)</span><span class="price">₹70/120</span></div>
+            <div class="menu-item"><span>Chicken Chilli (H/F)</span><span class="price">₹90/220</span></div>
+
+            <div class="menu-cat">Beverages</div>
+            <div class="menu-item"><span>Tea / Coffee</span><span class="price">₹10/20</span></div>
+            <div class="menu-item"><span>Cold Drinks</span><span class="price">MRP</span></div>
+        </div>
     </div>
 
     <div id="map" class="content-box">
-        <h3 style="text-align:center;">Hamari Sahi Location</h3>
         <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.5298158586324!2d86.17700687508493!3d23.65701197873323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4214b8f529c83%3A0x3f5ce95b97db98d7!2sPari%20Kitchen%20-%20Best%20Food%20in%20Chira%20Chas!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-            
-            <a href="https://maps.google.com/maps?q=Pari+Kitchen+Chira+Chas" 
-               target="_blank" 
-               class="btn-action" 
-               style="background:#4285F4;">
-               🧭 Open in Google Maps
-            </a>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m12!1m3!1d3656.776104868962!2d86.1822769!3d23.5764834!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4214b8f529c83%3A0x3f5ce95b97db98d7!2z4KSq4KSw4KWAIOCkleCkvuCkoeCkqCAtIOCkrOClhOizp9ClpCDgpKvgpYLgpKcg4KSH4KSoIOCkm-Ckv-CksOCkvuCkmSDgpKrgpL7gpLg!5e0!3m2!1shi!2sin!4v1705680000000!5m2!1shi!2sin9" allowfullscreen="" loading="lazy"></iframe>
+            <a href="https://maps.google.com/maps?q=Pari+Kitchen+Chira+Chas" target="_blank" class="btn-action" style="background:#4285F4;">🧭 Open in Google Maps</a>
         </div>
     </div>
 </section>
 
 <footer>
-    © 2026 Pari Kitchen | Chira Chas | Bokaro Steel City
+    © 2026 Pari Kitchen | Chira Chas
 </footer>
 
 <script>
-    function show(id) {
+    function showSection(id) {
         document.querySelectorAll('.content-box').forEach(div => div.style.display = 'none');
         document.getElementById(id).style.display = 'block';
+    }
+
+    function toggleMenu(type) {
+        document.getElementById('vegMenu').classList.remove('active');
+        document.getElementById('nonvegMenu').classList.remove('active');
+        document.getElementById('btnVeg').classList.remove('active');
+        document.getElementById('btnNonVeg').classList.remove('active');
+
+        if(type === 'veg') {
+            document.getElementById('vegMenu').classList.add('active');
+            document.getElementById('btnVeg').classList.add('active');
+        } else {
+            document.getElementById('nonvegMenu').classList.add('active');
+            document.getElementById('btnNonVeg').classList.add('active');
+        }
     }
 </script>
 
