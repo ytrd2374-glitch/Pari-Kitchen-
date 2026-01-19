@@ -85,7 +85,7 @@ section {
 
 .info-row { margin: 15px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
-/* BUTTONS */
+/* ACTION BUTTONS */
 .action-buttons {
     display: flex;
     flex-direction: column;
@@ -130,12 +130,31 @@ section {
     border-bottom: 1px dashed #eee;
 }
 
-/* MAP */
+/* MAP SECTION */
+.map-container {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
 .map-container iframe {
     width: 100%;
-    height: 400px;
+    height: 450px;
     border: 0;
     border-radius: 12px;
+}
+
+.btn-directions {
+    margin-top: 15px;
+    background: #4285F4; /* Google Blue */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
 }
 
 footer {
@@ -174,7 +193,7 @@ footer {
                 <a href="tel:+919006414133" class="btn-link bg-call">📞 Direct Call</a>
             </div>
             
-            <p style="margin-top:20px; color:#666; font-size: 14px;">Menu dekhne ke liye upar diye gaye button par click karein.</p>
+            <p style="margin-top:20px; color:#666; font-size: 14px;">Menu ya Location dekhne ke liye upar diye gaye buttons ka upyog karein.</p>
         </div>
     </div>
 
@@ -184,36 +203,42 @@ footer {
             <div class="menu-item"><span>Tea</span> <span>₹10</span></div>
             <div class="menu-item"><span>Mineral Water</span> <span>₹20</span></div>
             <div class="menu-item"><span>Coffee</span> <span>₹20</span></div>
+            <div class="menu-item"><span>Cold Drinks</span> <span>MRP</span></div>
             <div class="menu-item"><span>Maggi / Cheese Maggi</span> <span>₹35 / ₹45</span></div>
         </div>
         <div class="menu-category">
             <h2>Roti & Dosa</h2>
+            <div class="menu-item"><span>Plain Roti</span> <span>₹10</span></div>
             <div class="menu-item"><span>Aloo / Paneer Paratha</span> <span>₹30 / ₹40</span></div>
             <div class="menu-item"><span>Plain Dosa</span> <span>₹40</span></div>
             <div class="menu-item"><span>Masala / Onion Dosa</span> <span>₹50 / ₹60</span></div>
+            <div class="menu-item"><span>Idli (2Pc) / Mini (10Pc)</span> <span>₹20 / ₹45</span></div>
         </div>
     </div>
 
     <div id="map" class="content-box">
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.123!2d86.177!3d23.645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4233742374237%3A0x1234567890abcdef!2sPari%20Kitchen!5e0!3m2!1sen!2sin!4v1234567890"></iframe>
+            <h3>Hamari Location</h3>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.74411603565!2d86.1770258!3d23.6135319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f42337d4576859%3A0xc6822453e990374e!2sPari%20Kitchen%20-%20Best%20Food%20in%20chira%20chas!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+            <br>
+            <a href="https://maps.app.goo.gl/K6fR7zN6u1eD1tYc8" target="_blank" class="btn-directions">🧭 Google Maps par dekhein</a>
         </div>
     </div>
 
 </section>
 
 <footer>
-© 2026 Pari Kitchen | Chira Chas
+© 2026 Pari Kitchen | Chira Chas | Road No - 4, Phase I, Vastu Vihar
 </footer>
 
 <script>
 function showSection(id) {
     document.querySelectorAll('.content-box').forEach(div => div.style.display = 'none');
     document.getElementById(id).style.display = 'block';
-}
-
-function openDirections() {
-    window.open("https://maps.google.com/maps?daddr=Pari+Kitchen+Chira+Chas", "_blank");
 }
 </script>
 
